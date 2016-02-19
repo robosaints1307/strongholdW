@@ -5,8 +5,8 @@
 Shooter::Shooter() :
 		Subsystem("Shooter")
 {
-	control_L = new Talon(LSHOOT);
-	control_R = new Talon(RSHOOT);
+	control_L = new Spark(LSHOOT);
+	control_R = new Spark(RSHOOT);
 }
 
 void Shooter::Shoot(){

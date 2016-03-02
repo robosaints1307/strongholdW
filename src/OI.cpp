@@ -46,7 +46,7 @@ OI::OI()
 
 	CommandGroup* hook_bar = new CommandGroup();
 	hook_bar->AddSequential(new ThrowHookArms());
-	hook_bar->AddSequential(new WaitCommand(.5)); // wait half a second
+	hook_bar ->AddSequential(new WaitCommand(.5)); // wait half a second
 	hook_bar->AddSequential(new ReleaseHookArms());
 	throw_hook_arms_button->WhenPressed(hook_bar);
 }

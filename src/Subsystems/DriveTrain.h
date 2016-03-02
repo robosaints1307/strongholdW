@@ -8,11 +8,17 @@ class DriveTrain: public Subsystem
 {
 private:
 	RobotDrive* robotDrive;
+	Encoder* leftEncoder;
+	Encoder* rightEncoder;
 
 public:
 	DriveTrain();
 	void InitDefaultCommand();
 	void TankDrive(Joystick* rStick, Joystick* lStick);
+	double GetLeftEncoderVal();
+	double GetRightEncoderVal();
+	void ResetEncoders();
+	void AutoMove(float, float);
 };
 
 #endif

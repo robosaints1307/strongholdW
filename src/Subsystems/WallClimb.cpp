@@ -1,16 +1,15 @@
 #include "WallClimb.h"
 #include "../RobotMap.h"
 #include "../Commands/Climb.h"
-#include "../Commands/WinchForward.h"
-#include "../Commands/WinchBack.h"
 
+bool climbing;
 WallClimb::WallClimb() :
 		Subsystem("WallClimb")
 {
-	pistonL = new DoubleSolenoid(WINCH_PISTON_L_F, WINCH_PISTON_L_R);
-	pistonR = new DoubleSolenoid(WINCH_PISTON_R_F, WINCH_PISTON_R_R);
-
+	piston = new DoubleSolenoid(HOOK_ARM_PISTON_FORWARD, HOOK_ARM_PISTON_REVERSE);
+	climbing = false;
 	winch = new Talon(WINCH);
+	winch->Set(0);
 }
 
 void WallClimb::InitDefaultCommand()
@@ -22,20 +21,30 @@ void WallClimb::InitDefaultCommand()
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-void WallClimb::Up(){
-	pistonL->Set(DoubleSolenoid::Value::kForward);
-	pistonR->Set(DoubleSolenoid::Value::kForward);
+void WallClimb::ActuateHookArms(){
+	piston->Set(DoubleSolenoid::Value::kReverse);
 }
 
-void WallClimb::Down(){
-	pistonL->Set(DoubleSolenoid::Value::kReverse);
-	pistonR->Set(DoubleSolenoid::Value::kReverse);
+bool WallClimb::HookArmsActuated() {
+	return piston->Get() == DoubleSolenoid::kReverse;
+}
+void WallClimb::ReleaseHookArms(){
+	printf("WalClimb::ActuateHookArms");
+	piston->Set(DoubleSolenoid::Value::kForward);
 }
 
-void WallClimb::Pull(){
-	winch->Set(0.5);
+bool WallClimb::HookArmsReleased() {
+	return piston->Get() == DoubleSolenoid::kForward;
 }
 
-void WallClimb::Push(){
-	winch->Set(-0.5);
+void WallClimb::Climb(){
+	winch->Set(-1);
+}
+
+void WallClimb::Descend(){
+	winch->Set(1);
+}
+
+void WallClimb::Stop(){
+	winch->StopMotor();
 }

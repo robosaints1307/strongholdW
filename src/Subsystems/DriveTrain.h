@@ -7,10 +7,8 @@
 class DriveTrain: public Subsystem
 {
 private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-
 	RobotDrive* robotDrive;
+
 public:
 	DriveTrain();
 	void InitDefaultCommand();

@@ -12,7 +12,7 @@ Shoot::Shoot()
 // Called just before this Command runs the first time
 void Shoot::Initialize()
 {
-	Robot::shooter->Shoot();
+	Robot::shooter->SpinUp();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -24,13 +24,13 @@ void Shoot::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool Shoot::IsFinished()
 {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
 void Shoot::End()
 {
-	Robot::shooter->StopShoot();
+	Robot::shooter->Stop();
 }
 
 // Called when another command which requires one or more of the same

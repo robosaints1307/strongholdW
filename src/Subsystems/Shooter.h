@@ -15,8 +15,9 @@ private:
 
 public:
 	Shooter();
-	void Shoot();
-	void StopShoot();
+	void SpinUp();
+	bool AtSpeed();
+	void Stop();
 };
 
 #endif

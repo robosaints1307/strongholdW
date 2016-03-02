@@ -8,7 +8,6 @@ Drive::Drive()
 	// eg. Requires(chassis);
 
 	Requires(Robot::driveTrain);
-	//Requires(Robot::oi);
 }
 
 // Called just before this Command runs the first time
@@ -20,7 +19,7 @@ void Drive::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void Drive::Execute()
 {
-	Robot::driveTrain->TankDrive(Robot::oi->getrStick(),Robot::oi->getlStick());
+	Robot::driveTrain->TankDrive(Robot::oi->GetRStick(),Robot::oi->GetLStick());
 }
 
 // Make this return true when this Command no longer needs to run execute()

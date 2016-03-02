@@ -6,28 +6,27 @@
 DriveTrain::DriveTrain() :
 		Subsystem("DriveTrain")
 {
-	robotDrive = new RobotDrive(LFTREAD,LBTREAD,RFTREAD,RBTREAD);
+	robotDrive = new RobotDrive(LFTREAD, LBTREAD, RFTREAD, RBTREAD);
 	robotDrive->SetSensitivity(1.0);
 	robotDrive->SetMaxOutput(1.0);
 
-	robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, false);	// invert the left side motors
-	robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, false);
-	robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, false);	// invert the left side motors
-	robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
+	// Motors set to inverted because joysticks were driving the wrong way
+	robotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+	robotDrive->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+	robotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+	robotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 }
 
 void DriveTrain::InitDefaultCommand()
 {
 	// Set the default command for a subsystem here.
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new Drive());
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::TankDrive(Joystick* rStick, Joystick* lStick){
-
+	SmartDashboard::PutNumber("rStick", rStick->GetY());
+	SmartDashboard::PutNumber("lStick", lStick->GetY());
 	robotDrive->TankDrive(rStick, lStick);
-
-
-
 }

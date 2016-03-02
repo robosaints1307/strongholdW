@@ -1,6 +1,7 @@
 #include "Climb.h"
 #include "../Robot.h"
 
+
 Climb::Climb()
 {
 	// Use Requires() here to declare subsystem dependencies
@@ -11,7 +12,7 @@ Climb::Climb()
 // Called just before this Command runs the first time
 void Climb::Initialize()
 {
-	Robot::wallClimb->Up();
+	Robot::wallClimb->Climb();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -29,12 +30,12 @@ bool Climb::IsFinished()
 // Called once after isFinished returns true
 void Climb::End()
 {
-
+	Robot::wallClimb->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void Climb::Interrupted()
 {
-
+	End();
 }

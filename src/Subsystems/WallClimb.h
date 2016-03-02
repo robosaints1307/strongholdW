@@ -11,16 +11,18 @@ private:
 	// for methods that implement subsystem capabilities
 
 	SpeedController* winch;
+	DoubleSolenoid* piston;
 
-	DoubleSolenoid* pistonL;
-	DoubleSolenoid* pistonR;
 public:
 	WallClimb();
 	void InitDefaultCommand();
-	void Up();
-	void Down();
-	void Push();
-	void Pull();
+	void ActuateHookArms();
+	bool HookArmsActuated();
+	void ReleaseHookArms();
+	bool HookArmsReleased();
+	void Climb();
+	void Descend();
+	void Stop();
 };
 
 #endif

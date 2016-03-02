@@ -12,12 +12,13 @@ private:
 	// for methods that implement subsystem capabilities
 
 	DoubleSolenoid* piston;
-	Compressor* comp;
 
 public:
 	BallLift();
 	void Lift();
+	bool IsLifted();
 	void Lower();
+	bool IsLowered();
 	void Compress();
 };
 

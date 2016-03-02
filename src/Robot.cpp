@@ -1,48 +1,44 @@
 #include "Robot.h"
-//#include "Commands/ExampleCommand.h"
-
-
 
 	Command *autonomousCommand;
-	LiveWindow *lw;
 
 	DriveTrain* Robot::driveTrain = NULL;
 	OI* Robot::oi = NULL;
 	Shooter* Robot::shooter = NULL;
 	BallLift* Robot::ballLift = NULL;
-	BallPush* Robot::ballPush = NULL;
+	BallKicker* Robot::ballKicker = NULL;
 	WallClimb* Robot::wallClimb = NULL;
 
-	void RobotInit()
-	{
+	Robot::Robot() {
+		compressor = new Compressor();
+	}
 
+	void Robot::RobotInit()
+	{
+		printf("MY ROBOT INIT");
 		//autonomousCommand = new ExampleCommand();
-		lw = LiveWindow::GetInstance();
 		Robot::driveTrain = new DriveTrain();
 		Robot::shooter = new Shooter();
-		Robot::oi = new OI();
 		Robot::ballLift = new BallLift();
-		Robot::ballPush = new BallPush();
+		Robot::ballKicker = new BallKicker();
 		Robot::wallClimb = new WallClimb();
+		Robot::oi = new OI();
+
+//		compressor->SetClosedLoopControl(true);
 	}
 	
-	void DisabledPeriodic()
-	{
-		Scheduler::GetInstance()->Run();
-	}
-
-	void AutonomousInit()
+	void Robot::AutonomousInit()
 	{
 		if (autonomousCommand != NULL)
 			autonomousCommand->Start();
 	}
 
-	void AutonomousPeriodic()
+	void Robot::AutonomousPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
 	}
 
-	void TeleopInit()
+	void Robot::TeleopInit()
 	{
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to 
@@ -50,16 +46,16 @@
 		// this line or comment it out.
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
+
 	}
 
-	void TeleopPeriodic()
+	void Robot::TeleopPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
 	}
 
-	void TestPeriodic()
+	void Robot::TestPeriodic()
 	{
-		lw->Run();
 	}
 
 

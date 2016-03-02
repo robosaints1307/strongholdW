@@ -20,32 +20,40 @@
 //const int RANGE_FINDER_PORT = 1;
 //const int RANGE_FINDER_MODULE = 1;
 
-static const int LSTICK = 0;
-static const int RSTICK = 1;
-static const int STICK = 0;
+static const int RSTICK = 0;
+static const int LSTICK = 1;
+static const int GAME_CONTROLLER = 2;
 
+// GAME CONTROLLER BUTTON ASSIGNMENTS
+static const int X_BUTTON = 1;
+static const int Y_BUTTON = 4;
+static const int B_BUTTON = 3;
+static const int A_BUTTON = 2;
+static const int LEFT_SHOULDER_BUTTON = 5;
+static const int RIGHT_SHOULDER_BUTTON = 6;
+static const int LEFT_TRIGGER_BUTTON = 7;
+static const int RIGHT_TRIGGER_BUTTON = 8;
+
+// crawler track channels
 const int LFTREAD = 0;
 const int LBTREAD = 1;
 const int RFTREAD = 2;
 const int RBTREAD = 3;
-const int WINCH = 4;
-const int LSHOOT = 5;
-const int RSHOOT = 6;
 
-const int BALL_LIFT_SOL_FORWARD = 0;
-const int BALL_LIFT_SOL_REVERSE = 1;
-const int BALL_PUSH_SOL_FORWARD = 2;
-const int BALL_PUSH_SOL_REVERSE = 3;
+// motor controller channels
+const int WINCH = 6;
+const int LSHOOT = 4;
+const int RSHOOT = 5;
 
-const int WINCH_PISTON_L_F = 4;
-const int WINCH_PISTON_L_R = 5;
+// solenoid channels
+const int HOOK_ARM_PISTON_FORWARD = 0;
+const int HOOK_ARM_PISTON_REVERSE = 1;
+const int BALL_LIFT_SOL_FORWARD = 2;
+const int BALL_LIFT_SOL_REVERSE = 3;
+const int BALL_PUSH_SOL_FORWARD = 4;
+const int BALL_PUSH_SOL_REVERSE = 5;
 
-const int WINCH_PISTON_R_F = 6;
-const int WINCH_PISTON_R_R = 7;
-
-//AUTONOMOUS
-
-const int LEFT = 2;
-const int RIGHT = 0;
+// ball thrower speed
+const float MAX_SHOOTER_SPEED = 0.5;
 
 #endif

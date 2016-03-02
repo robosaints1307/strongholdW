@@ -56,4 +56,11 @@ const int BALL_PUSH_SOL_REVERSE = 5;
 // ball thrower speed
 const float MAX_SHOOTER_SPEED = 0.5;
 
+//encoders
+
+static const int LEFT_ENCODER_CHAN_A = 0;
+static const int LEFT_ENCODER_CHAN_B = 1;
+static const int RIGHT_ENCODER_CHAN_A = 2;
+static const int RIGHT_ENCODER_CHAN_B = 3;
+
 #endif

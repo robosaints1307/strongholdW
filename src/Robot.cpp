@@ -1,6 +1,6 @@
 #include "Robot.h"
 
-	Command *autonomousCommand;
+	CommandGroup *autonomousCommand;
 
 	DriveTrain* Robot::driveTrain = NULL;
 	OI* Robot::oi = NULL;
@@ -16,7 +16,7 @@
 	void Robot::RobotInit()
 	{
 		printf("MY ROBOT INIT");
-		//autonomousCommand = new ExampleCommand();
+		//autonomousCommand = new CommandGroup();
 		Robot::driveTrain = new DriveTrain();
 		Robot::shooter = new Shooter();
 		Robot::ballLift = new BallLift();
@@ -24,7 +24,14 @@
 		Robot::wallClimb = new WallClimb();
 		Robot::oi = new OI();
 
-//		compressor->SetClosedLoopControl(true);
+//		CommandGroup* kick = new CommandGroup();
+//		kick->AddSequential(new Kick());
+//		kick->AddSequential(new WaitCommand(.5)); // wait half a second
+//		kick->AddSequential(new ResetKicker());
+//
+//		autonomousCommand->AddSequential(kick);
+
+		compressor->SetClosedLoopControl(true);
 	}
 	
 	void Robot::AutonomousInit()
